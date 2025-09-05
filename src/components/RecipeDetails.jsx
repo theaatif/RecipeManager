@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useRecipes } from "../contexts/RecipeContext";
@@ -21,7 +21,7 @@ const RecipeDetails = () => {
   }, [id, recipes]);
 
   const toggleAvailability = (index) => {
-    if( ingredients[index].available) return;
+    if (ingredients[index].available) return;
     const updatedIngredients = ingredients.map((ing, i) =>
       i === index ? { ...ing, available: !ing.available } : ing
     );
@@ -38,11 +38,22 @@ const RecipeDetails = () => {
     toast.success("Ingredient availability updated!");
     //toast updated
 
-  //  const changedToAvailable =  updatedIngredients.some((updatedIngredients,i) => !ingredients[i].available && updatedIngredients.available)
-  //  if( changedToAvailable){
-  //   toast.success("Ingredient availability updated!");
-  //  }
+    //  const changedToAvailable =  updatedIngredients.some((updatedIngredients,i) => !ingredients[i].available && updatedIngredients.available)
+    //  if( changedToAvailable){
+    //   toast.success("Ingredient availability updated!");
+    //  }
   };
+
+  // for button disable logic
+  const isSaveDisabled = useMemo(() => {
+    const hasValidSteps =
+      editedSteps.split("\n").filter((step) => step.trim()).length > 0;
+
+    const hasChanges =
+      editedSteps.trim() !== (recipe?.steps || []).join("\n").trim();
+
+    return !hasValidSteps || !hasChanges;
+  }, [editedSteps, recipe?.steps]);
 
   const handleEditSteps = () => {
     setIsEditingSteps(true);
@@ -171,9 +182,20 @@ const RecipeDetails = () => {
                   placeholder="Enter each step on a new line..."
                 />
                 <div className="flex gap-3">
-                  <button
+                  {/* <button
                     onClick={handleSaveSteps}
                     className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-200"
+                  >
+                    Save Changes
+                  </button> */}
+                  <button
+                    onClick={handleSaveSteps}
+                    disabled={isSaveDisabled}
+                    className={`bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-200 ${
+                      isSaveDisabled
+                        ? "opacity-50 cursor-not-allowed hover:bg-green-500 hover:shadow-md hover:scale-100"
+                        : ""
+                    }`}
                   >
                     Save Changes
                   </button>
