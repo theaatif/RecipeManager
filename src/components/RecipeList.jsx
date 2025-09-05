@@ -60,9 +60,9 @@ const RecipeList = () => {
                   {recipe.name}
                 </h3>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500">
+                  {/* <span className="text-sm text-gray-500">
                     {recipe.ingredients?.length || 0} ingredients
-                  </span>
+                  </span> */}
                   <Link
                     to={`/recipe/${recipe.id}`}
                     className="bg-red-500 text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg transform hover:scale-105 transition-all duration-200"
