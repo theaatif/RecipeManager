@@ -9,6 +9,9 @@ const Navbar = () => {
       {/* for Desktop/Tab */}
       <nav className="hidden sm:block fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
         <div className="bg-white/90 backdrop-blur-md rounded-full shadow-2xl border border-white/20 px-6 py-3 flex items-center gap-6">
+        <div className="text-xl font-bold text-red-600">
+            #️ Recipe Manager
+          </div>
           <Link
             to="/"
             className={`flex items-center gap-2 px-4 py-2 rounded-full font-semibold transition-all duration-200 ${
@@ -33,9 +36,7 @@ const Navbar = () => {
             <span>Add Recipe</span>
           </Link>
 
-          <div className="text-xl font-bold text-red-600">
-            🍳 Recipe Manager
-          </div>
+          
         </div>
       </nav>
 
