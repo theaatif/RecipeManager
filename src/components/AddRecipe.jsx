@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useRecipes } from '../contexts/RecipeContext';
 
+
 const AddRecipe = () => {
   const { recipes, setRecipes } = useRecipes();
   const [name, setName] = useState('');
@@ -85,6 +86,7 @@ const AddRecipe = () => {
               onChange={handleInputChange(setName)}
               className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 hover:border-red-400"
               placeholder="Enter recipe name..."
+              
             />
           </div>
 

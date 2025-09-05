@@ -21,6 +21,7 @@ const RecipeDetails = () => {
   }, [id, recipes]);
 
   const toggleAvailability = (index) => {
+    if( ingredients[index].available) return;
     const updatedIngredients = ingredients.map((ing, i) =>
       i === index ? { ...ing, available: !ing.available } : ing
     );
@@ -35,6 +36,12 @@ const RecipeDetails = () => {
     });
     setRecipes(updatedRecipes);
     toast.success("Ingredient availability updated!");
+    //toast updated
+
+  //  const changedToAvailable =  updatedIngredients.some((updatedIngredients,i) => !ingredients[i].available && updatedIngredients.available)
+  //  if( changedToAvailable){
+  //   toast.success("Ingredient availability updated!");
+  //  }
   };
 
   const handleEditSteps = () => {
