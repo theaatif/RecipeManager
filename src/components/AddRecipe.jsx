@@ -85,7 +85,6 @@ const AddRecipe = () => {
               onChange={handleInputChange(setName)}
               className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 hover:border-red-400"
               placeholder="Enter recipe name..."
-              required
             />
           </div>
 
@@ -99,7 +98,6 @@ const AddRecipe = () => {
               className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 hover:border-red-400"
               rows="4"
               placeholder="e.g., flour, sugar, eggs, milk"
-              required
             />
             <p className="text-sm text-gray-500 mt-1">Separate each ingredient with a comma</p>
           </div>
@@ -114,7 +112,6 @@ const AddRecipe = () => {
               className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 hover:border-red-400"
               rows="6"
               placeholder="1. Preheat oven to 350°F&#10;2. Mix ingredients&#10;3. Bake for 30 minutes"
-              required
             />
             <p className="text-sm text-gray-500 mt-1">Write each step on a new line</p>
           </div>
